@@ -9,7 +9,7 @@ class Grace <Formula
   depends_on 'openmotif'
 
   def install
-    system "./configure", "--disable-dependency-tracking", "--prefix=#{prefix}"
+    system "./configure", "--x-includes=/usr/X11/include", "--x-libraries=/usr/X11/lib", "--disable-dependency-tracking", "--prefix=#{prefix}"
     system "make install"
   end
 end
