@@ -10,14 +10,12 @@ class LibtorrentSf <Formula
 
 
   def install
-
-    configure_args = ["--enable-python-binding", "--disable-dependency-tracking", "--prefix=#{prefix}"]
+    ENV.gcc_4_2
+    configure_args = ["--enable-python-binding", "--with-boost-python=mt", "--disable-dependency-tracking", "--prefix=#{prefix}"]
 
     configure_args << "--with-libgeoip" if Formula.factory('geoip').installed?
                     
     system "./configure", *configure_args
     system "make install"
-    system "python setup.py build"
-    system "python setup.py install --prefix=#{prefix}"
   end
 end
