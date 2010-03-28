@@ -23,14 +23,14 @@ class Deluge <Formula
   depends_on 'sdl_ttf'
   depends_on 'smpeg'
 # Serious hazzle, try patch from macports, then 
-# LOCALBASE='/usr/local' python config.py
+# LOCALBASE='/usr/local' python config.py and manual install
   depends_on 'pygame' => :python
 
-  depends_on 'pygtk' => :python  
+  depends_on 'pygtk'
   depends_on 'twisted' => :python
 
   depends_on 'libnotify'
-  depends_on 'py-notify' => :python
+  depends_on 'notify' => :python
 
   depends_on 'gettext'
   depends_on 'geoip' => :optional
@@ -38,6 +38,8 @@ class Deluge <Formula
   depends_on 'xdg-utils'
 
   def install
+    # try temporary pythonpath until links are made
+    ENV['PYTHONPATH'] = "#{prefix}/lib/python2.6/site-packages/"
     system "python setup.py build"
     system "python setup.py install --prefix=#{prefix}"
   end
