@@ -34,7 +34,7 @@ class Deluge <Formula
 
   depends_on 'gettext'
   depends_on 'geoip' => :optional
-  depends_on 'boost'
+  depends_on 'libtorrent-sf'
   depends_on 'xdg-utils'
 
   def install
