@@ -10,8 +10,18 @@ class Avogadro <Formula
   depends_on 'eigen'
   depends_on 'openbabel'
 
+  eigen = Formula.factory 'eigen'
+  openbabel = Formula.factory 'openbabel'
+  
+
   def install
-    system "cmake . #{std_cmake_parameters}"
+   FileUtils.mkdir('build')
+   FileUtils.cd('build')
+
+   cmake_args = "-DOPENBABEL2_LIBRARIES=#{openbabel.lib} " + "-DOPENBABEL2_INCLUDE_DIR=#{openbabel.include} "
+              + "-DEIGEN2_INCLUDE_DIR=#{eigen.include} " + "-DDISABLE_UPDATE_CHECKER "
+
+    system "cmake .. #{std_cmake_parameters} " + cmake_args
     system "make install"
   end
 end
