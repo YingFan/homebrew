@@ -14,8 +14,7 @@ class Fftw <Formula
                           "--enable-threads",
                           "--enable-single",
                           "--enable-sse",
-                          "--disable-dependency-tracking",
-                          "--disable-fortran"
+                          "--disable-dependency-tracking"
     system "make install"
 
     # clean up so we can compile the double precision variant
@@ -28,8 +27,7 @@ class Fftw <Formula
                           "--prefix=#{prefix}",
                           "--enable-threads",
                           "--enable-sse2",
-                          "--disable-dependency-tracking",
-                          "--disable-fortran"
+                          "--disable-dependency-tracking"
 
     system "make install"
 
@@ -43,8 +41,7 @@ class Fftw <Formula
                           "--prefix=#{prefix}",
                           "--enable-threads",
                           "--enable-long-double",
-                          "--disable-dependency-tracking",
-                          "--disable-fortran"
+                          "--disable-dependency-tracking"
 
     system "make install"
 
